@@ -30,4 +30,11 @@ public class SalesServiceTest {
         saleService.add(sale);
         Assert.assertEquals(saleList.get(0), sale);
     }
+
+    @Test
+    public void WhenRemoveSaleFromSaleListItDisappearFromSaleList() {
+        saleList.add(sale);
+        saleService.remove(sale);
+        Assert.assertTrue(saleList.isEmpty());
+    }
 }

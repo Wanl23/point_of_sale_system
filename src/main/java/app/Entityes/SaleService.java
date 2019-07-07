@@ -20,4 +20,8 @@ public class SaleService {
         }
         salesList.add(sale);
     }
+
+    public void remove(Sale sale) {
+        salesList.remove(sale);
+    }
 }

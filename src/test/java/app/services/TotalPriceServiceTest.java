@@ -20,7 +20,7 @@ public class TotalPriceServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        product = new Product(1, "Bread","loaf", 5);
+        product = new Product(1, "Bread", "loaf", 5);
         sale = new Sale(product, 4);
         saleList = new ArrayList<>();
         saleList.add(sale);
@@ -55,4 +55,13 @@ public class TotalPriceServiceTest {
         totalPriceService.plus(product, qty);
         Assert.assertEquals(totalPriceService.getTotalQty(product), qty + specialOffer.getGetFree());
     }
+
+    @Test
+    public void WhenAddProductForCalcAndThereAreSpecialOfferItAddFreeProductAndNotOverPassLimit() {
+        int qty = 200;
+        totalPriceService.plus(product, qty);
+        Assert.assertEquals(totalPriceService.getTotalQty(product),
+                qty / specialOffer.getQtyNeedToBuy() <= specialOffer.getLimit() ? qty + qty / specialOffer.getQtyNeedToBuy() : qty + specialOffer.getLimit());
+    }
 }
+

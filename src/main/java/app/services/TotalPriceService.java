@@ -28,8 +28,12 @@ public class TotalPriceService {
                 });
         specialOfferList.stream().filter(s -> s.getProduct() == product)
                 .forEach(s -> {
-                    if (s.getQtyNeedToBuy() == qty) {
-                        totalQty.put(product, qty + 1);
+                    if (s.getQtyNeedToBuy() <= qty) {
+                        int allowedProduct = qty / s.getQtyNeedToBuy();
+                        if (allowedProduct <= s.getLimit())
+                            totalQty.put(product, qty + allowedProduct);
+                        else
+                            totalQty.put(product, qty + s.getLimit());
                     }
                 });
         totalPrice = totalPrice + product.getPrice() * qty;

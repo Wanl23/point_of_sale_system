@@ -2,6 +2,7 @@ package app.services;
 
 import app.Entityes.Product;
 import app.Entityes.Sale;
+import app.Entityes.SpecialForSomePrice;
 import app.Entityes.SpecialOffer;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,15 +13,22 @@ import java.util.List;
 public class TotalPriceServiceTest {
 
     TotalPriceService totalPriceService;
+
     Product product;
-    List<Sale> saleList;
+
     Sale sale;
+    List<Sale> saleList;
+
     SpecialOffer specialOffer;
     List<SpecialOffer> specialOfferList;
+
+    SpecialForSomePrice specialForSomePrice;
+    List<SpecialForSomePrice> specialForSomePriceList;
 
     @Before
     public void setUp() throws Exception {
         product = new Product(1, "Bread", "loaf", 5);
+
         sale = new Sale(product, 4);
         saleList = new ArrayList<>();
         saleList.add(sale);
@@ -29,7 +37,11 @@ public class TotalPriceServiceTest {
         specialOfferList = new ArrayList<>();
         specialOfferList.add(specialOffer);
 
-        totalPriceService = new TotalPriceService(saleList, specialOfferList);
+        specialForSomePrice = new SpecialForSomePrice(product, 2, 4);
+        specialForSomePriceList = new ArrayList<>();
+        specialForSomePriceList.add(specialForSomePrice);
+
+        totalPriceService = new TotalPriceService(saleList, specialOfferList, specialForSomePriceList);
     }
 
     @Test
@@ -58,10 +70,19 @@ public class TotalPriceServiceTest {
 
     @Test
     public void WhenAddProductForCalcAndThereAreSpecialOfferItAddFreeProductAndNotOverPassLimit() {
-        int qty = 200;
+        int qty = 4;
         totalPriceService.plus(product, qty);
-        Assert.assertEquals(totalPriceService.getTotalQty(product),
-                qty / specialOffer.getQtyNeedToBuy() <= specialOffer.getLimit() ? qty + qty / specialOffer.getQtyNeedToBuy() : qty + specialOffer.getLimit());
+        int newPrice = qty / specialOffer.getQtyNeedToBuy() <= specialOffer.getLimit() ? qty + qty / specialOffer.getQtyNeedToBuy() : qty + specialOffer.getLimit();
+        Assert.assertEquals(totalPriceService.getTotalQty(product), newPrice);
+
+    }
+
+    @Test
+    public void WhenAddProductForCalcAndThereAreSpecialForSomePriceTotalPriceCalcUsingOfferPrice() {
+        int qty = 2;
+        totalPriceService.plus(product, qty);
+        int newPrice = qty >= specialForSomePrice.getQty() ? qty / specialForSomePrice.getQty() * specialForSomePrice.getPrice() + qty % specialForSomePrice.getQty() * product.getPrice() : product.getPrice() * qty;
+        Assert.assertEquals(totalPriceService.getTotalPrice(), newPrice);
     }
 }
 

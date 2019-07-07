@@ -6,9 +6,12 @@ public class TotalPriceService {
 
     private static int totalPrice;
 
-
     public int plus(Product product) {
         totalPrice = totalPrice + product.getPrice();
+        return totalPrice;
+    }
+
+    public int getTotalPrice() {
         return totalPrice;
     }
 

@@ -20,4 +20,10 @@ public class TotalPriceServiceTest {
     public void WhenAddNewProductForCalculatingItReturnIncreasedFullSum() {
         Assert.assertEquals(totalPriceService.plus(product), product.getPrice());
     }
+
+    @Test
+    public void WhenAddNewProductForCalculatingItIncreasedTotalPrice() {
+        totalPriceService.plus(product);
+        Assert.assertEquals(totalPriceService.getTotalPrice(), product.getPrice());
+    }
 }

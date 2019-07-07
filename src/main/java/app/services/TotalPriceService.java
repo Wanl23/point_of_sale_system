@@ -26,7 +26,6 @@ public class TotalPriceService {
     }
 
     public int plus(Product product, int qty) {
-
         if (totalQty == null) totalQty = new HashMap<>();
         if (saleList == null) saleList = new ArrayList<>();
         if (specialOfferList == null) specialOfferList = new ArrayList<>();
@@ -48,11 +47,12 @@ public class TotalPriceService {
         specialForSomePriceList.stream().filter(s -> s.getProduct() == product)
                 .forEach(s -> {
                     if (qty >= s.getQty()) {
-                        totalPrice += qty / s.getQty() * s.getPrice() + qty % s.getQty() * product.getPrice();
+                        totalPrice += (qty - (qty % s.getQty())) * s.getPrice() + (qty % s.getQty() * product.getPrice());
                         useNormalPrice = false;
                     }
                 });
-        if (useNormalPrice) totalPrice = totalPrice + product.getPrice() * qty;
+        if (useNormalPrice)
+            totalPrice = totalPrice + product.getPrice() * qty;
         return totalPrice;
     }
 

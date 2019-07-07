@@ -19,4 +19,13 @@ public class ProductService {
         if (productList == null) productList = new ArrayList<>();
         productList.add(product);
     }
+
+    public void remove(Product product) {
+        if (!productList.contains(product)) {
+            throw new IllegalArgumentException("There are not such product in products list");
+        }
+        productList.remove(product);
+    }
+
+
 }

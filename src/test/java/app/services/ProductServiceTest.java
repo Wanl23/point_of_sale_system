@@ -12,9 +12,11 @@ public class ProductServiceTest {
 
     ProductService productService;
     List<Product> products;
+    Product product;
 
     @Before
     public void setUp() {
+        product = new Product(1, "Bread","loaf", 5);
         products = new ArrayList<>();
         productService = new ProductService(products);
 
@@ -22,9 +24,14 @@ public class ProductServiceTest {
 
     @Test
     public void WhenAddProductItAppearedInProductList() {
-        Product product = new Product(1, "Bread","loaf", 5);
         productService.add(product);
         Assert.assertEquals(products.get(0), product);
+    }
 
+    @Test
+    public void WhenRemoveProductItDisappearFromProductList() {
+        products.add(product);
+        productService.remove(product);
+        Assert.assertTrue(products.isEmpty());
     }
 }

@@ -25,7 +25,7 @@ public class TotalPriceServiceTest {
         saleList = new ArrayList<>();
         saleList.add(sale);
 
-        specialOffer = new SpecialOffer(product, 2, 1);
+        specialOffer = new SpecialOffer(product, 2, 1, 1);
         specialOfferList = new ArrayList<>();
         specialOfferList.add(specialOffer);
 

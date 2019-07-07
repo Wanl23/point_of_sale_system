@@ -18,7 +18,7 @@ public class SpecialOfferServiceTest {
     @Before
     public void setUp() throws Exception {
         Product product = new Product(1, "bread", "loaf", 5);
-        specialOffer = new SpecialOffer(product, 2, 1);
+        specialOffer = new SpecialOffer(product, 2, 1, 1);
         specialOfferList = new ArrayList<>();
         specialOfferService = new SpecialOfferService(specialOfferList);
     }

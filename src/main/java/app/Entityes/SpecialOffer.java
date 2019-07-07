@@ -4,11 +4,13 @@ public class SpecialOffer {
     private Product product;
     private int qtyNeedToBuy;
     private int getFree;
+    private int limit;
 
-    public SpecialOffer(Product product, int qtyNeedToBuy, int getFree) {
+    public SpecialOffer(Product product, int qtyNeedToBuy, int getFree, int limit) {
         this.product = product;
         this.qtyNeedToBuy = qtyNeedToBuy;
         this.getFree = getFree;
+        this.limit = limit;
     }
 
     public Product getProduct() {
@@ -33,5 +35,13 @@ public class SpecialOffer {
 
     public void setGetFree(int getFree) {
         this.getFree = getFree;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
     }
 }

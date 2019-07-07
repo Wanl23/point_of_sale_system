@@ -22,6 +22,9 @@ public class SaleService {
     }
 
     public void remove(Sale sale) {
+        if (!salesList.contains(sale)) {
+            throw new IllegalArgumentException("There are not such sale in Sale list");
+        }
         salesList.remove(sale);
     }
 }

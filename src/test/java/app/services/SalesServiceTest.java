@@ -37,4 +37,9 @@ public class SalesServiceTest {
         saleService.remove(sale);
         Assert.assertTrue(saleList.isEmpty());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void WhenTryToRemoveNonexistentSaleItThrowAnException() {
+        saleService.remove(sale);
+    }
 }

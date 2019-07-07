@@ -36,4 +36,9 @@ public class SpecialForSomePriceTest {
         specialForSomePriceService.remove(specialForSomePrice);
         Assert.assertTrue(specialForSomePriceList.isEmpty());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void WhenRemoveNonexistentOfferItThrowAnException() {
+        specialForSomePriceService.remove(specialForSomePrice);
+    }
 }

@@ -19,6 +19,7 @@ public class SpecialForSomePriceService {
     }
 
     public void remove(SpecialForSomePrice specialForSomePrice) {
+        if (!specialForSomePriceList.contains(specialForSomePrice)) throw new IllegalArgumentException("There are not such offer in SpecialFroSomePrice list");
         specialForSomePriceList.remove(specialForSomePrice);
     }
 }

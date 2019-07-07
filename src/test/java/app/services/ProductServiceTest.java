@@ -34,4 +34,9 @@ public class ProductServiceTest {
         productService.remove(product);
         Assert.assertTrue(products.isEmpty());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void WhenTryToRemoveProductFromProductListWhereAreNotSuchProductItThrowAnException() {
+        productService.remove(product);
+    }
 }

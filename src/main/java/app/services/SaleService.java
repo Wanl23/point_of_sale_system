@@ -1,4 +1,6 @@
-package app.Entityes;
+package app.services;
+
+import app.Entityes.Sale;
 
 import java.util.ArrayList;
 import java.util.List;

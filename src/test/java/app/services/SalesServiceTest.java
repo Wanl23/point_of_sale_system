@@ -2,7 +2,6 @@ package app.services;
 
 import app.Entityes.Product;
 import app.Entityes.Sale;
-import app.Entityes.SaleService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

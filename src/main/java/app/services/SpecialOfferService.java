@@ -20,4 +20,8 @@ public class SpecialOfferService {
         if (specialOfferList == null) specialOfferList = new ArrayList<>();
         specialOfferList.add(specialOffer);
     }
+
+    public void remove(SpecialOffer specialOffer) {
+        specialOfferList.remove(specialOffer);
+    }
 }

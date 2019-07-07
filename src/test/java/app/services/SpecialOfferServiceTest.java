@@ -28,4 +28,11 @@ public class SpecialOfferServiceTest {
         specialOfferService.add(specialOffer);
         Assert.assertEquals(specialOfferList.get(0), specialOffer);
     }
+
+    @Test
+    public void WhenRemoveSpecialOfferItDisappearsFromOffersList() {
+        specialOfferList.add(specialOffer);
+        specialOfferService.remove(specialOffer);
+        Assert.assertTrue(specialOfferList.isEmpty());
+    }
 }

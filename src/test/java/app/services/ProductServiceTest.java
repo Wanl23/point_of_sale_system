@@ -19,7 +19,6 @@ public class ProductServiceTest {
         product = new Product(1, "Bread","loaf", 5);
         products = new ArrayList<>();
         productService = new ProductService(products);
-
     }
 
     @Test

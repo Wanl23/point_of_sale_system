@@ -35,4 +35,9 @@ public class SpecialOfferServiceTest {
         specialOfferService.remove(specialOffer);
         Assert.assertTrue(specialOfferList.isEmpty());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void WhenTryToRemoveNonexistentOfferItThrowAnException() {
+        specialOfferService.remove(specialOffer);
+    }
 }

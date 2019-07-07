@@ -17,4 +17,8 @@ public class SpecialForSomePriceService {
         if (specialForSomePriceList == null) specialForSomePriceList = new ArrayList<>();
         specialForSomePriceList.add(specialForSomePrice);
     }
+
+    public void remove(SpecialForSomePrice specialForSomePrice) {
+        specialForSomePriceList.remove(specialForSomePrice);
+    }
 }

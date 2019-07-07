@@ -29,4 +29,11 @@ public class SpecialForSomePriceTest {
         specialForSomePriceService.add(specialForSomePrice);
         Assert.assertEquals(specialForSomePriceList.get(0), specialForSomePrice);
     }
+
+    @Test
+    public void WhenRemoveSpecialOfferItDisappearedFromList() {
+        specialForSomePriceList.add(specialForSomePrice);
+        specialForSomePriceService.remove(specialForSomePrice);
+        Assert.assertTrue(specialForSomePriceList.isEmpty());
+    }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SaleService {
 
-    private List<Sale> salesList;
+    private static List<Sale> salesList;
 
     public SaleService(List<Sale> salesList) {
         this.salesList = salesList;

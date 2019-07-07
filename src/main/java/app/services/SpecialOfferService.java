@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SpecialOfferService {
 
-    List<SpecialOffer> specialOfferList;
+    private static List<SpecialOffer> specialOfferList;
 
     public SpecialOfferService(List<SpecialOffer> specialOfferList) {
         this.specialOfferList = specialOfferList;

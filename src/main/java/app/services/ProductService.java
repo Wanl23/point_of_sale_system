@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ProductService {
 
-    private List<Product> productList;
+    private static List<Product> productList;
 
     public ProductService(List<Product> productList) {
         this.productList = productList;
